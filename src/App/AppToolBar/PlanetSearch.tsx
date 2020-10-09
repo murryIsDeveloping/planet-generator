@@ -3,7 +3,7 @@ import { planetService } from "src/services/planetService";
 import { typing$ } from "./../../services/userInputs";
 import { Public } from "@material-ui/icons";
 import { InputBase } from "@material-ui/core";
-import { InputStyles } from "./InputStyle";
+import { InputStyles } from "./searchStyles"
 
 export default function PlanetSearch() {
   const classes = InputStyles();

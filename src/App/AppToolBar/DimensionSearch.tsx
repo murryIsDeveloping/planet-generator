@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { planetService } from "src/services/planetService";
-import { InputStyles } from "./InputStyle";
+import { InputStyles } from "./searchStyles";
 import { typing$ } from "./../../services/userInputs";
 import { InputBase } from "@material-ui/core";
 import { Fingerprint } from "@material-ui/icons";

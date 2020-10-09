@@ -123,7 +123,6 @@ const validNaming = (config: PlanetConfig) => {
 }
 
 export function planetConfig(name: string, dimension: string): PlanetConfig {
-  console.log({dimension})
   const transformations = dimension
     .split("")
     .map((x) => DIMENSION_TRANSFORMATIONS[x.toUpperCase()] || identity);

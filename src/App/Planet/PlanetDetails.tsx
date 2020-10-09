@@ -42,8 +42,8 @@ export default function PlanetDetails(){
 
     const resources = noDetails ? null : (
         <ul className={classes.resources}>
-            {resourceTypes.map((val)  => (
-                <li className={classes.resource}>{val}: {planet?.resourceLevel(val)}</li>
+            {resourceTypes.map((val, index)  => (
+                <li key={index} className={classes.resource}>{val}: {planet?.resourceLevel(val)}</li>
             ))}
         </ul>
     )
