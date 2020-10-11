@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { planetService } from "src/services/planetService";
-import { typing$ } from "./../../services/userInputs";
+import { planetService, eventsService } from "src/services";
 import { Public } from "@material-ui/icons";
 import { InputBase } from "@material-ui/core";
 import { InputStyles } from "./searchStyles"
@@ -17,16 +16,9 @@ export default function PlanetSearch() {
   function setPlanet(evt: any) {
     const name = evt.target.value;
     updateName(name);
-    planetService.setPlanet(name);
+    planetService.setName(name);
   }
 
-  function focused(evt: any) {
-    typing$.next(true);
-  }
-
-  function blured(evt: any) {
-    typing$.next(false);
-  }
   return (
     <div className={classes.search}>
       <div className={classes.searchIcon}>
@@ -40,8 +32,8 @@ export default function PlanetSearch() {
         }}
         inputProps={{ "aria-label": "Search Planets" }}
         onChange={setPlanet}
-        onFocus={focused}
-        onBlur={blured}
+        onFocus={() => eventsService.userTyping(true)}
+        onBlur={() => eventsService.userTyping(false)}
         value={name}
       />
     </div>

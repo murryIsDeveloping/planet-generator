@@ -3,6 +3,7 @@ import { planetScene } from "../../renderer/scene";
 import { makeStyles } from "@material-ui/core";
 import { useObservable } from "src/hooks/useObservable";
 import { planetService } from "src/services/planetService";
+import { eventsService } from "src/services";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -39,7 +40,7 @@ export default function PlanetRendering() {
   }
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} onTouchEnd={(_) => eventsService.userTap("generate planet")}>
       <div className={classes.banner}>{planet?.status}</div>
       <div ref={mount}></div>
     </div>

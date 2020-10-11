@@ -3,6 +3,7 @@ import AppToolBar from "./AppToolBar/AppToolBar";
 import PlanetRendering from "./Planet/PlanetRendering";
 import PlanetDetails from "./Planet/PlanetDetails";
 import { makeStyles } from "@material-ui/core";
+import { eventsService } from "./../services";
 
 const useStyles = makeStyles((theme) => ({
   planet: {
@@ -19,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px",
     textAlign: "center",
     gridColumnStart: 1,
-    gridColumnEnd: 3
+    gridColumnEnd: 3,
+    cursor: "pointer"
   },
 }));
 
@@ -32,7 +34,7 @@ function App() {
       <div className={classes.planet}>
         <PlanetRendering></PlanetRendering>
         <PlanetDetails></PlanetDetails>
-        <aside className={classes.spaceBarMessage}>
+        <aside className={classes.spaceBarMessage} onClick={() => eventsService.userTap("generate planet")}>
           Click the "Space" Bar to randomly search through some of our planets!
         </aside>
       </div>

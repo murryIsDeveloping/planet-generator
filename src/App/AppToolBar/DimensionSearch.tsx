@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { planetService } from "src/services/planetService";
+import { planetService, eventsService } from "src/services";
 import { InputStyles } from "./searchStyles";
-import { typing$ } from "./../../services/userInputs";
 import { InputBase } from "@material-ui/core";
 import { Fingerprint } from "@material-ui/icons";
 
@@ -17,13 +16,6 @@ export default function DimensionSearch() {
     }
   }
 
-  function focused(evt: any) {
-    typing$.next(true);
-  }
-
-  function blured(evt: any) {
-    typing$.next(false);
-  }
   return (
     <div className={classes.search}>
       <div className={classes.searchIcon}>
@@ -37,8 +29,8 @@ export default function DimensionSearch() {
         }}
         inputProps={{ "aria-label": "Search Dimensions" }}
         onChange={dimensionName}
-        onFocus={focused}
-        onBlur={blured}
+        onFocus={() => eventsService.userTyping(true)}
+        onBlur={() => eventsService.userTyping(false)}
         value={dimension}
       />
     </div>
