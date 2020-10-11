@@ -2,7 +2,7 @@ import React from "react";
 import AppToolBar from "./AppToolBar/AppToolBar";
 import PlanetRendering from "./Planet/PlanetRendering";
 import PlanetDetails from "./Planet/PlanetDetails";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, StylesProvider } from "@material-ui/core/styles";
 import { eventsService } from "./../services";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,14 +30,14 @@ function App() {
 
   return (
     <div>
-      <AppToolBar></AppToolBar>
-      <div className={classes.planet}>
-        <PlanetRendering></PlanetRendering>
-        <PlanetDetails></PlanetDetails>
-        <aside className={classes.spaceBarMessage} onClick={() => eventsService.userTap("generate planet")}>
-          Click the "Space" Bar to randomly search through some of our planets!
-        </aside>
-      </div>
+        <AppToolBar></AppToolBar>
+        <div className={classes.planet}>
+          <PlanetRendering></PlanetRendering>
+          <PlanetDetails></PlanetDetails>
+          <aside className={classes.spaceBarMessage} onClick={() => eventsService.userTap("generate planet")}>
+            Click the "Space" Bar to randomly search through some of our planets!
+          </aside>
+        </div>
     </div>
   );
 }

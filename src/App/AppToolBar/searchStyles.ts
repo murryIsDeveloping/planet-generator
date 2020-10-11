@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { fade } from "@material-ui/core";
+import { fade } from "@material-ui/core/styles";
 
 export const InputStyles = makeStyles((theme) => ({
   search: {

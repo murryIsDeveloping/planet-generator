@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { planetService, eventsService } from "src/services";
-import { InputStyles } from "./searchStyles";
 import { InputBase } from "@material-ui/core";
 import { Fingerprint } from "@material-ui/icons";
+import { InputStyles } from "./searchStyles";
 
 export default function DimensionSearch() {
   const classes = InputStyles();
