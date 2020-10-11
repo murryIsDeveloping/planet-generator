@@ -2,7 +2,7 @@ import React from "react";
 import AppToolBar from "./AppToolBar/AppToolBar";
 import PlanetRendering from "./Planet/PlanetRendering";
 import PlanetDetails from "./Planet/PlanetDetails";
-import { makeStyles, StylesProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { eventsService } from "./../services";
 
 const useStyles = makeStyles((theme) => ({

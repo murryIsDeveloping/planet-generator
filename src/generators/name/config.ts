@@ -22,8 +22,16 @@ const SW = [
   "RD-D2",
   "C3P0",
   "Jar Jar Binks",
+  "Jaba the Hut",
+  "Boba Fett",
+  "General Grievous",
+  "BB-8",
+  "Darth Maul",
+  "Mace Windu",
+  "Jango Fett",
+  "Admiral Ackbar"
 ];
-const RM = ["Rick", "Morty", "Summer", "Beth", "Jerry", "Sqanchy", "Jessica"];
+const RM = ["Rick", "Morty", "Summer", "Beth", "Jerry", "Sqanchy", "Jessica", "Bird Person", "Mr Poopybutthole"];
 
 export const namingCombinations = {
     prefix: ["", "Planet ", "Quadrant "],

@@ -10,7 +10,7 @@ export default function DimensionSearch() {
 
   function dimensionName(evt: any) {
     const name = evt.target.value;
-    if (/^[0-9a-f]+$/.test(name) || name === "") {
+    if (/^[0-9a-fA-F]+$/.test(name) || name === "") {
       updateDimension(name);
       planetService.setDimension(name);
     }
