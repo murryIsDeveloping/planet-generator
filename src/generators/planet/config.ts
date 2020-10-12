@@ -89,7 +89,7 @@ const DIMENSION_TRANSFORMATIONS = {
     waterDetail: multiply(1.2),
     price: multiply(1.1),
   }),
-  "8": multiper("soldPercent", 3),
+  "8": multiper("soldPercent", 0.3),
   "9": multiper("supernovaPercent", 5),
   A: postfixName(" Land"),
   B: evolve({

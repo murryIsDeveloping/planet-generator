@@ -41,7 +41,7 @@ export default function DimensionRules() {
               <p><strong>'5': Smug Dimension</strong> - Prices are 20% higher</p>  
               <p><strong>'6': Shiny Dimension</strong> - 15% more minerals</p> 
               <p><strong>'7': It's so detailed Dimension</strong> - 20% more detail 10% more expensive</p> 
-              <p><strong>'8': Selling out fase Dimension</strong> - 3 as likely property has already sold</p> 
+              <p><strong>'8': Selling out fase Dimension</strong> - 30% more likely property has already sold</p> 
               <p><strong>'9': Old Dimension</strong> - 5 times as likely property has supernova'd</p> 
               <p><strong>'A': Land Dimension</strong> - Names must end in ' Land'</p> 
               <p><strong>'B': Low Poly Dimension</strong> - 20% less detail and 20% cheaper</p> 
