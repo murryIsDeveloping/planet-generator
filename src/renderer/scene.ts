@@ -1,3 +1,4 @@
+import { planetService } from 'src/services';
 import { Planet } from './../generators/planet/planet';
 import { MeshRenderer, MeshName } from './mesh';
 import { DirectionalLight, Mesh, PerspectiveCamera, Scene, TextureLoader, WebGLRenderer } from "three";
@@ -7,6 +8,7 @@ import BG1 from './../assets/bg_1.jpg';
 import BG2 from './../assets/bg_2.jpg';
 import BG3 from './../assets/bg_3.jpg';
 import BG4 from './../assets/bg_4.jpg';
+import { Subscription } from 'rxjs';
 
 const backgrounds = [BG0,BG1,BG2,BG3,BG4]
 
@@ -19,6 +21,18 @@ export class PlanetScene {
     superNovaMesh: Mesh;
     meshRenderer = new MeshRenderer()
     backgroundImage: string;
+    widthSub: Subscription;
+    width: number;
+
+    constructor(){
+      this.widthSub = planetService.renderSize$.subscribe(width => {
+        this.width = width;
+        if(this.renderer?.domElement) {
+          this.renderer.domElement.style.width = `${this.width}px`;
+          this.renderer.domElement.style.height = `${this.width}px`;
+        }
+      });
+    }
 
     createScene(mount: any){
         this.init = true;
@@ -26,7 +40,7 @@ export class PlanetScene {
         this.camera.position.z = 6;
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         mount.appendChild(this.renderer.domElement);
-        var light = new DirectionalLight(0xffffff, 0.95);
+        var light = new DirectionalLight(0xffffff, 1);
         light.position.set(0, 2, 2).normalize();
         this.scene.add(light);
   
@@ -48,14 +62,9 @@ export class PlanetScene {
         this.setBackground(planet.style.background)
         this.mesh = this.meshRenderer.mesh(planet.status, planet.style)
         this.mesh.forEach(mesh => this.scene.add(mesh))
-    
-        const windowWidth = window.innerWidth;
-        const sm = windowWidth;
-        const lg = Math.min((windowWidth/2)-80, window.innerHeight-75);
-        const width = windowWidth >= 960 ? lg : sm
 
-        this.renderer.domElement.style.width = `${width}px`;
-        this.renderer.domElement.style.height = `${width}px`;
+        this.renderer.domElement.style.width = `${this.width}px`;
+        this.renderer.domElement.style.height = `${this.width}px`;
       }
     }
   

@@ -81,12 +81,12 @@ const DIMENSION_TRANSFORMATIONS = {
   "1": multiper("ring", 1.2),
   "2": multiper("water", 0.7),
   "3": multiper("radius", 0.7),
-  "4": multiper("price", 0.7),
-  "5": multiper("price", 1.4),
-  "6": multiper("metalic", 1.2),
+  "4": multiper("price", 0.75),
+  "5": multiper("price", 1.2),
+  "6": multiper("metalic", 1.15),
   "7": evolve({
-    detail: multiply(1.3),
-    waterDetail: multiply(1.3),
+    detail: multiply(1.2),
+    waterDetail: multiply(1.2),
     price: multiply(1.1),
   }),
   "8": multiper("soldPercent", 3),
@@ -101,9 +101,16 @@ const DIMENSION_TRANSFORMATIONS = {
   C: evolve({
     background: add(1),
   }),
-  D: prefixName("Sm"),
+  D: prefixName("Sm-"),
   // everythings in a box
-  E: pipe(prefixName("[ "), postfixName(" ]"), evolve({ detail: multiply(0.5) })),
+  E: pipe(
+    prefixName("[ "), 
+    postfixName(" ]"), 
+    evolve({ 
+      detail: multiply(0.5), 
+      waterDetail: multiply(0.5) 
+    })
+  ),
   // fart dimension lower price greater gas radius and chance of gas
   F: evolve({
     price: multiply(0.9),

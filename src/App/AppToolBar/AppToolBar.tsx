@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import DimensionSearch from './DimensionSearch';
 import PlanetSearch from './PlanetSearch';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     flexGrow: 1,
   },
@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: ["Anton", "san-serif"].join(","),
     textAlign: 'left',
     width: '100%',
-  }
-}));
+  },
+});
 
 export default function AppToolBar() {
   const classes = useStyles();

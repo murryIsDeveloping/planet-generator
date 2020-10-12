@@ -9,7 +9,7 @@ export default function PlanetSearch() {
   const [name, updateName] = useState("");
 
   useEffect(() => {
-    const sub = planetService.planetName$.subscribe(updateName);
+    const sub = planetService.name$.subscribe(updateName);
     return () => sub.unsubscribe();
   }, []);
 

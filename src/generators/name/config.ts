@@ -57,17 +57,10 @@ const postfixName = (postfixValue: string) => (config: NameConfig) => ({
   postfix: config.postfix + postfixValue,
 });
 
-const exclude = (value: string) => (config: NameConfig) => ({
-  ...config,
-  exclude: new Set([...Array.from(config.exclude), value]),
-});
-
 const DIMENSION_NAMING = {
   "0": postfixName("!"),
-  "7": exclude("Earth"),
   A: postfixName(" Land"),
-  D: prefixName("Sm"),
-  // everythings in a box
+  D: prefixName("Sm-"),
   E: pipe(prefixName("[ "), postfixName(" ]")),
 };
 

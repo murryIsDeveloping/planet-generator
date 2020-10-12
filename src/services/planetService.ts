@@ -42,7 +42,10 @@ export const planetService = function(eventsService){
   const name$ = merge(
     nameInput$.pipe(inputTransformations),
     nameGenerator$,
-  ).pipe(startWith(initName));
+  ).pipe(
+    startWith(initName), 
+    shareReplay(1)
+  );
   
   const planet$ = combineLatest([name$, dimension$]).pipe(
     map(([name, dimension]) => planetConfig(name, dimension)),
@@ -50,10 +53,18 @@ export const planetService = function(eventsService){
     shareReplay(1),
   );
 
+  const renderSize$ = eventsService.screenResize$.pipe(
+    startWith({height: window.innerHeight, width: window.innerWidth}),
+    map(({height, width}) => {
+    const lg = Math.min((width/2)-80, height-75);
+    return width >= 960 ? lg : width
+  }));
+
   return {
     setName: (value: string) => nameInput$.next(value),
     setDimension: (value: string) => dimensionInput$.next(value),
-    planet$: planet$,
-    planetName$: name$
+    renderSize$,
+    planet$,
+    name$
   }
 }(eventsService)

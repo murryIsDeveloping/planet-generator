@@ -3,9 +3,11 @@ import React from 'react'
 import { PlanetStatus } from 'src/generators';
 import { useObservable } from 'src/hooks/useObservable';
 import { planetService } from 'src/services/planetService';
+import DimensionRules from './DimensionRules';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     details: {
+        position: "relative",
         padding: "30px",
         letterSpacing: "3px",
     },
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
         textTransform: "capitalize",
         fontWeight: "bold",
     }
-  }));
+  });
 
 const extendedStatus = (status: PlanetStatus, name: string) => {
     switch(status){
@@ -50,6 +52,7 @@ export default function PlanetDetails(){
 
     return (
         <div className={classes.details}>
+            <DimensionRules></DimensionRules>
             <h1 className={classes.title}>{planet?.name}</h1>
             {price}
             <h2>{extendedStatus(planet?.status, planet?.name)}</h2>

@@ -5,7 +5,7 @@ import { useObservable } from "src/hooks/useObservable";
 import { planetService } from "src/services/planetService";
 import { eventsService } from "src/services";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   wrapper: {
     overflow: 'hidden',
     position: "relative",
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontFamily: ["Anton", "san-serif"].join(","),
   },
-}));
+});
 
 export default function PlanetRendering() {
   const classes = useStyles();

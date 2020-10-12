@@ -8,21 +8,25 @@ import { eventsService } from "./../services";
 const useStyles = makeStyles((theme) => ({
   planet: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gridTemplateRows: "auto 80px",
+    gridTemplateColumns: `auto 1fr`,
+    gridTemplateRows: "auto auto",
     [theme.breakpoints.down("sm")]: {
       display: "flex",
       flexDirection: "column",
     },
   },
-  spaceBarMessage: {
+  spaceBar: {
     backgroundColor: "#ddd",
     padding: "20px",
     textAlign: "center",
     gridColumnStart: 1,
     gridColumnEnd: 3,
-    cursor: "pointer"
+    cursor: "pointer",
   },
+  message: {
+    fontSize: "27px",
+    fontWeight: 400
+  }
 }));
 
 function App() {
@@ -34,8 +38,9 @@ function App() {
         <div className={classes.planet}>
           <PlanetRendering></PlanetRendering>
           <PlanetDetails></PlanetDetails>
-          <aside className={classes.spaceBarMessage} onClick={() => eventsService.userTap("generate planet")}>
-            Click the "Space" Bar to randomly search through some of our planets!
+          <aside className={classes.spaceBar} onClick={() => eventsService.userTap("generate planet")}>
+            <h3 className={classes.message}>Ray Lightyear's Intergalatic and Interdimensional real estate. Please feel free to browse through our infinite range.</h3>
+            <strong>Click here or use the "Space" Bar to randomly search through some of our planets!</strong>
           </aside>
         </div>
     </div>
