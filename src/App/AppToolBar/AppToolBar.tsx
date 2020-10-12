@@ -6,9 +6,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import DimensionSearch from './DimensionSearch';
 import PlanetSearch from './PlanetSearch';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  toolbar: {
+    [theme.breakpoints.down("xs")]: {
+      display: "grid",
+      gridColumn: "1fr",
+      rowGap: "8px",
+      paddingBottom: "10px",
+    },
   },
   title: {
     fontSize: "30px",
@@ -16,7 +24,7 @@ const useStyles = makeStyles({
     textAlign: 'left',
     width: '100%',
   },
-});
+}));
 
 export default function AppToolBar() {
   const classes = useStyles();
@@ -25,7 +33,7 @@ export default function AppToolBar() {
     <React.Fragment>
     <header className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <Typography className={classes.title} variant="h6" noWrap>
             Ray Lightyear
           </Typography>
