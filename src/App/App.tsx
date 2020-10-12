@@ -39,7 +39,7 @@ function App() {
           <PlanetRendering></PlanetRendering>
           <PlanetDetails></PlanetDetails>
           <aside className={classes.spaceBar} onClick={() => eventsService.userTap("generate planet")}>
-            <h3 className={classes.message}>Ray Lightyear's Intergalatic and Interdimensional real estate. Please feel free to browse through our infinite range.</h3>
+            <h3 className={classes.message}>Ray Lightyear's Intergalatic and Interdimensional real estate. <br/> Please feel free to browse through our infinite range.</h3>
             <strong>Click here or use the "Space" Bar to randomly search through some of our planets!</strong>
           </aside>
         </div>
