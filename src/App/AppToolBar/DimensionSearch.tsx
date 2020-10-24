@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { planetService, eventsService } from "src/services";
+import { PlanetService, EventsService } from "src/services";
 import { InputBase } from "@material-ui/core";
 import { Fingerprint } from "@material-ui/icons";
 import { InputStyles } from "./searchStyles";
 
-export default function DimensionSearch() {
+function DimensionSearch({planetService, eventsService}) {
   const classes = InputStyles();
   const [dimension, updateDimension] = useState("");
 
@@ -36,3 +36,5 @@ export default function DimensionSearch() {
     </div>
   );
 }
+
+export default EventsService.withService(PlanetService.withService(DimensionSearch, "planetService"), "eventsService")

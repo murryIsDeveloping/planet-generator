@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import { planetScene } from "../../renderer/scene";
 import { makeStyles } from "@material-ui/core";
 import { useObservable } from "src/hooks/useObservable";
-import { planetService } from "src/services/planetService";
-import { eventsService } from "src/services";
+import { EventsService, PlanetService } from "src/services";
+import { Planet } from "src/generators";
 
 const useStyles = makeStyles({
   wrapper: {
@@ -26,10 +26,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function PlanetRendering() {
+export function PlanetRendering({eventsService, planetService}) {
   const classes = useStyles();
   const mount = useRef(null);
-  const planet = useObservable(planetService.planet$);
+  const planet: Planet = useObservable(planetService.planet$);
 
   if (mount.current && !planetScene.init) {
     planetScene.createScene(mount.current);
@@ -46,3 +46,6 @@ export default function PlanetRendering() {
     </div>
   );
 }
+
+export default EventsService.withService(PlanetService.withService(PlanetRendering, "planetService"), "eventsService")
+

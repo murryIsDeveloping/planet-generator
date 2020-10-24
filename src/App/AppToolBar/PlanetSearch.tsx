@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { planetService, eventsService } from "src/services";
+import {PlanetService, EventsService } from "src/services";
 import { Public } from "@material-ui/icons";
 import { InputBase } from "@material-ui/core";
 import { InputStyles } from "./searchStyles"
 
-export default function PlanetSearch() {
+function PlanetSearch({planetService, eventsService}) {
   const classes = InputStyles();
   const [name, updateName] = useState("");
 
@@ -39,3 +39,5 @@ export default function PlanetSearch() {
     </div>
   );
 }
+
+export default EventsService.withService(PlanetService.withService(PlanetSearch, "planetService"), "eventsService")

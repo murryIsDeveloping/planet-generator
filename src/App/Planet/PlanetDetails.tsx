@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react'
-import { PlanetStatus } from 'src/generators';
+import { Planet, PlanetStatus } from 'src/generators';
 import { useObservable } from 'src/hooks/useObservable';
-import { planetService } from 'src/services/planetService';
+import { PlanetService } from 'src/services';
 import DimensionRules from './DimensionRules';
 
 const useStyles = makeStyles({
@@ -35,9 +35,9 @@ const extendedStatus = (status: PlanetStatus, name: string) => {
     }
 }
 
-export default function PlanetDetails(){
+export function PlanetDetails({planetService}){
     const classes = useStyles();
-    const planet = useObservable(planetService.planet$);
+    const planet: Planet = useObservable(planetService.planet$);
     const noDetails = planet?.status === "Not Found" || planet?.status === "Supernova'd"
     const price = noDetails ? null : <h2 className={classes.title}>${planet?.price.toLocaleString()}</h2>;
     const resourceTypes: ("liquid" | "gas" | "minerals" | "ring")[] = ["minerals", "liquid", "gas", "ring"]
@@ -60,3 +60,5 @@ export default function PlanetDetails(){
         </div>
     ) 
 }
+
+export default PlanetService.withService(PlanetDetails, "planetService")

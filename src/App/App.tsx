@@ -3,7 +3,7 @@ import AppToolBar from "./AppToolBar/AppToolBar";
 import PlanetRendering from "./Planet/PlanetRendering";
 import PlanetDetails from "./Planet/PlanetDetails";
 import { makeStyles } from "@material-ui/core/styles";
-import { eventsService } from "./../services";
+import { EventsService } from "./../services";
 
 const useStyles = makeStyles((theme) => ({
   planet: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function App() {
+function App({service}) {
   const classes = useStyles();
 
   return (
@@ -38,7 +38,7 @@ function App() {
         <div className={classes.planet}>
           <PlanetRendering></PlanetRendering>
           <PlanetDetails></PlanetDetails>
-          <aside className={classes.spaceBar} onClick={() => eventsService.userTap("generate planet")}>
+          <aside className={classes.spaceBar} onClick={() => service.userTap("generate planet")}>
             <h3 className={classes.message}>Ray Lightyear's Intergalatic and Interdimensional real estate. <br/> Please feel free to browse through our infinite range.</h3>
             <strong>Click here or use the "Space" Bar to randomly search through some of our planets!</strong>
           </aside>
@@ -47,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default EventsService.withService(App);

@@ -1,4 +1,4 @@
-import { planetService } from 'src/services';
+import { planetService } from 'src/services/planetService';
 import { Planet } from './../generators/planet/planet';
 import { MeshRenderer, MeshName } from './mesh';
 import { DirectionalLight, Mesh, PerspectiveCamera, Scene, TextureLoader, WebGLRenderer } from "three";
