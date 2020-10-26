@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
-import { EventsService, PlanetService } from "src/services";
+import { EventsService, PlanetService, servicesProviders } from "src/services";
+
+const Providers = servicesProviders(EventsService, PlanetService);
 
 ReactDOM.render(
-  <EventsService.Provider>
-    <PlanetService.Provider>
+  <Providers>
       <App />
-    </PlanetService.Provider>
-  </EventsService.Provider>,
+  </Providers>,
   document.getElementById('root')
 );
 

@@ -1,6 +1,8 @@
 import {eventsService} from "./eventsService";
 import {planetService} from "./planetService";
-import ServiceProvider from "./serviceProvider";
+import { Service } from "./serviceProvider";
 
-export const PlanetService = ServiceProvider(planetService);
-export const EventsService = ServiceProvider(eventsService);
+export * from "./serviceProvider";
+
+export const PlanetService = Service(planetService, "planetService");
+export const EventsService = Service(eventsService, "eventsService");

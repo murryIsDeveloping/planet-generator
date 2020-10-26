@@ -1,26 +1,41 @@
 import React from "react";
 
-export default function ServiceProvider<T>(service: T) {
-  const Context = React.createContext(service);
+type Service<T> = {
+  name: string;
+  store: T,
+  Context: React.Context<T>;
+}
+export function Service<T>(store: T, name: string) : Service<T> {
+  const Context = React.createContext(store);
   return {
-    // the provider
-    Provider: (props: any) => {
-      return (
-        <Context.Provider value={service}>
-          {props.children}
-        </Context.Provider>
-      );
-    },
-    // the HOC store wrapper
-    withService: (Component: any, name="service") => (props: any) => {
-      return (
-        <Context.Consumer>
-          {(service) => {
-            const serviceProp = {[name]: service}
-            return <Component {...serviceProp} {...props}></Component>;
+    store,
+    Context,
+    name
+  }
+}
+
+
+export function withServices(Component: any, services: Service<any>[]) {
+  return services.reduce((Comp, service: Service<any>) => {
+    const Consumer = service.Context.Consumer
+    return (props: any) => (
+      <Consumer>
+          {(data) => {
+            const serviceProp = {[service.name]: data}
+            return <Comp {...serviceProp} {...props}></Comp>;
           }}
-        </Context.Consumer>
-      );
-    },
-  };
+      </Consumer>
+    )
+  }, (props: any) => (<Component {...props}></Component>)) 
+}
+
+export function servicesProviders(...services: Service<any>[]) {
+  return (props: any) => services.reduce((acc, service) => {
+    const Provider = service.Context.Provider
+    return (
+      <Provider value={service.store}>
+        {acc}
+      </Provider>
+    )
+  }, props.children) 
 }

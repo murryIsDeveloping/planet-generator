@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PlanetService, EventsService } from "src/services";
+import { PlanetService, EventsService, withServices } from "src/services";
 import { InputBase } from "@material-ui/core";
 import { Fingerprint } from "@material-ui/icons";
 import { InputStyles } from "./searchStyles";
@@ -37,4 +37,4 @@ function DimensionSearch({planetService, eventsService}) {
   );
 }
 
-export default EventsService.withService(PlanetService.withService(DimensionSearch, "planetService"), "eventsService")
+export default withServices(DimensionSearch, [PlanetService, EventsService])

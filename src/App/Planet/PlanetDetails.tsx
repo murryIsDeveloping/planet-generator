@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react'
 import { Planet, PlanetStatus } from 'src/generators';
 import { useObservable } from 'src/hooks/useObservable';
-import { PlanetService } from 'src/services';
+import { PlanetService, withServices } from 'src/services';
 import DimensionRules from './DimensionRules';
 
 const useStyles = makeStyles({
@@ -61,4 +61,4 @@ export function PlanetDetails({planetService}){
     ) 
 }
 
-export default PlanetService.withService(PlanetDetails, "planetService")
+export default withServices(PlanetDetails, [PlanetService])

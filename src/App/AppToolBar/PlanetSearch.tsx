@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {PlanetService, EventsService } from "src/services";
+import {PlanetService, EventsService, withServices } from "src/services";
 import { Public } from "@material-ui/icons";
 import { InputBase } from "@material-ui/core";
 import { InputStyles } from "./searchStyles"
@@ -40,4 +40,4 @@ function PlanetSearch({planetService, eventsService}) {
   );
 }
 
-export default EventsService.withService(PlanetService.withService(PlanetSearch, "planetService"), "eventsService")
+export default withServices(PlanetSearch, [PlanetService, EventsService])

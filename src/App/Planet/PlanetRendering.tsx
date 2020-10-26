@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { planetScene } from "../../renderer/scene";
 import { makeStyles } from "@material-ui/core";
 import { useObservable } from "src/hooks/useObservable";
-import { EventsService, PlanetService } from "src/services";
+import { EventsService, PlanetService, withServices } from "src/services";
 import { Planet } from "src/generators";
 
 const useStyles = makeStyles({
@@ -47,5 +47,4 @@ export function PlanetRendering({eventsService, planetService}) {
   );
 }
 
-export default EventsService.withService(PlanetService.withService(PlanetRendering, "planetService"), "eventsService")
-
+export default withServices(PlanetRendering, [PlanetService, EventsService])
