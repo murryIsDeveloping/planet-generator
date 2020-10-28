@@ -11,7 +11,7 @@ function PlanetSearch({planetService, eventsService}) {
   useEffect(() => {
     const sub = planetService.name$.subscribe(updateName);
     return () => sub.unsubscribe();
-  }, []);
+  }, [planetService.name$]);
 
   function setPlanet(evt: any) {
     const name = evt.target.value;
